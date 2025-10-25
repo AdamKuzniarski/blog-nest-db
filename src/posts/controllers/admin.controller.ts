@@ -30,4 +30,9 @@ updateOneAdminPost(
     return this.postsService.updateOneById(id, updatePostDto)
 }
 
+@Delete(':id')
+deleteOneAdminPost(@Param('id', ParseIntPipe) id: number){
+    return this.postsService.deleteOneById(id)
+}
+
 }
