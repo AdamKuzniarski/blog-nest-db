@@ -14,8 +14,10 @@ export class PostEntity {
   @Column({ length: 255 })
   title: string;
 
-  @Column('text')
-  textBody: string;
+  // Align property name with API DTOs (CreatePostDto/UpdatePostDto use `content`).
+  // Keep DB column name backward compatible by keeping column name as 'textBody'.
+  @Column('text', { name: 'textBody' })
+  content: string;
 
   @Column({ default: true })
   isPublished: boolean;

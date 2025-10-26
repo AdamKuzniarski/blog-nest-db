@@ -4,14 +4,16 @@ import { PostEntity } from './entity/posts/post.entity';
 import { PostsModule } from './posts/posts.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import {join} from 'path';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: 'database.sqlite',
-      entities: [PostEntity],
+      database: join(process.cwd(), 'data/db.sqlite'),
+      autoLoadEntities: true,
       synchronize: true,
+      logging: true,
     }),
     PostsModule,
   ],
